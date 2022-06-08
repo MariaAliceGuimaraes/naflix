@@ -41,7 +41,7 @@ Todos os dados dos catálogos como título, descrição, capa, foto de backgroun
 
 - [x] **Listagem Carrossel**: Apresentar botões de controle para manipular a visualização dos itens da sessão.
 
-- [ ] **Listagem minha Watchlist**: Listagem de filmes e series que foram adiconados a minha watchlist.
+- [x] **Listagem minha Watchlist**: Listagem de filmes e series que foram adiconados a minha watchlist.
 
 
 ## 📥 Instalação e execução
