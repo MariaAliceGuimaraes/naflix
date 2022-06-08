@@ -1,18 +1,17 @@
+Projeto baseado no repositorio https://github.com/leovargasdev/netflix-clone 
+
 <p align="center">
-  <img alt="NetflixClone" title="NetflixClone" src=".github/logo.svg" width="400px" />
+  <img alt="NetflixClone" title="NetflixClone" src=".github/logo.png" width="400px" />
 </p>
 
 <h3 align = "center" fontSize="60px">
-  Clone da plataforma de streaming <a href="https://www.netflix.com/">Netflix</a>
+  Clone da plataforma de streaming <a href="https://www.netflix.com/">N.A.flix</a>
 </h3>
 
 <p align="center">
   <img alt="Interface da aplicação" src=".github/screenshot.png" width="100%">
 </p>
 
-<p align="center">
-  <img alt="Funcionamento da aplicação" src=".github/demo.gif" width="100%">
-</p>
 
 ## :rocket: Tecnologias
 
