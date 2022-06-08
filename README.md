@@ -46,10 +46,10 @@ Todos os dados dos catálogos como título, descrição, capa, foto de backgroun
 
 ## 📥 Instalação e execução
 
-Faça um clone desse repositório e acesse o diretório.
+Faça um fork desse repositório, e no seu fork faca clone do projeto.
 
 ```bash
-$ git clone git@github.com:LeeonardoVargas/netflix-clone.git && cd netflix-clone
+$ git clone git@github.com:<seuUsuario>/<seurepositorio>.git && cd <seurepositorio>
 ```
 
 Para ter acesso a API você precisará de uma chave, basta criar uma conta no TMDB para ter acesso, [link do cadastro](https://www.themoviedb.org/signup). Caminho da chave: **Perfil -> Configurações -> API -> Chave da API**
@@ -70,7 +70,7 @@ Faça o `fork` e clone o projeto a partir do seu usuário.
 
 ```bash
 # Clonando projeto
-$ git clone https://github.com/SEU-NOME-DE-USUARIO/netflix-clone.git
+$ git clone https://github.com/<seuUsuario>/<seurepositorio>.git
 
 # Criando um branch
 $ git branch minha-alteracao
