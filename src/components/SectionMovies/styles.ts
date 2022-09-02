@@ -126,6 +126,48 @@ export const Movie = styled.div`
   `}
 `;
 
+export const MovieButtonPlay = styled.a`
+  background: rgba(109, 109, 110, 0.7);
+  // color: #000;
+  margin-right: 0.8rem;
+`;
+
+export const MovieButtons = styled.div`
+  display: flex;
+  align-items: center;
+
+  a {
+    display: flex;
+    align-items: center;
+    padding: 11px 28px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 24px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 0.8rem;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  ${media.lessThan('medium')`
+    a {
+      padding: 8px 20px;
+      font-size: 16px;
+
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  `};
+`;
+
 export const MovieCard = styled.div`
   position: absolute;
   top: 15px;

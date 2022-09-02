@@ -30,13 +30,14 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   const apiRoutes: { name: string; route: string }[] = [
-    { name: 'Em alta', route: '/tv/popular?' },
-    { name: 'Séries populares no N.A.Flix', route: '/account/12457302/watchlist/tv?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&language=pt-BR' },
-    { name: 'Filmes bem Avaliados', route: '/account/12457302/watchlist/movies?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&language=pt-BR' },
-    { name: 'Lançamentos', route: '/movie/now_playing?' },
-    { name: 'Ação', route: '/discover/movie?with_genres=28&' },
-    { name: 'Ficção científica', route: '/discover/movie?with_genres=878&' },
-    { name: 'Romance', route: '/discover/movie?with_genres=10749&' },
+    { name: 'Em alta', route: '3/tv/popular?' },
+    { name: 'Séries populares no N.A.Flix', route: '4/list/8215404?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&language=pt-BR&page=1/results' },
+    { name: 'Lançamentos', route: '3/movie/now_playing?' },
+    { name: 'Filmes bem Avaliados', route: '3/movie/top_rated?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&language=pt-BR&page=1' },
+    { name: 'Mistério', route: '3/discover/movie?with_genres=9648&' },
+    { name: 'Família', route: '3/discover/movie?with_genres=10751&' },
+    { name: 'Ação', route: '3/discover/movie?with_genres=28&' },
+    
   ];
 
   useEffect(() => {
@@ -44,8 +45,8 @@ const Home: React.FC = () => {
 
     const urlsAxios = apiRoutes.map(({ route }, index) => {
       let pageRandom = '1';
-      // Somente as três primeiras listas são randômicas
-      if (index < 3) pageRandom = (Math.random() * (5 - 1) + 1).toString();
+      // Somente a primeira lista é randômicas
+      if (index < 1) pageRandom = (Math.random() * (5 - 1) + 1).toString();
 
       const URL = route.concat(URL_LANGUAGE_AND_KEY).concat(pageRandom);
       return api.get(URL);
@@ -63,10 +64,11 @@ const Home: React.FC = () => {
           setSectionsMovies(responsesApi);
 
           const randamIdMovie = Math.floor(Math.random() * 20);
-          setFeaturedMovieId(responsesApi[0].movies[randamIdMovie].id);
+          // setFeaturedMovieId(responsesApi[0].movies[randamIdMovie].id);
           // setFeaturedMovieId(75006); //umbrella academy
           // setFeaturedMovieId(93405); //squid game
-          // setFeaturedMovieId(66732); //stranger things
+          setFeaturedMovieId(66732); //stranger things
+
           
           // Criando efeito de loading
           setTimeout(() => setLoading(false), 800);

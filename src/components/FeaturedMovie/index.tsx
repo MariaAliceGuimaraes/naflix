@@ -30,7 +30,7 @@ const FeaturedMovie: React.FC<{ movieId: number }> = ({ movieId }) => {
   useEffect(() => {
     api
       .get(
-        `/tv/${movieId}?language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`,
+        `3/tv/${movieId}?language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`,
       )
       .then(response => {
         const { data } = response;

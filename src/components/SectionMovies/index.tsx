@@ -1,3 +1,4 @@
+import { rgb } from 'polished';
 import React, { useCallback, useMemo, useState } from 'react';
 import {
   FaChevronLeft,
@@ -8,6 +9,7 @@ import {
   FaPlus,
 } from 'react-icons/fa';
 
+
 import {
   Container,
   ContentMovies,
@@ -16,6 +18,8 @@ import {
   MovieCardControll,
   ButtonLetf,
   ButtonRight,
+  MovieButtonPlay,
+  MovieButtons,
 } from './styles';
 
 interface SectionMoviesProps {
@@ -52,7 +56,47 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
 
   return (
     <Container>
-      <h1>{name}</h1>
+
+      <div style={{ display: 'flex' }}>
+
+        <MovieButtons style={{ display: 'flex',
+                                alignItems: 'center',
+                                width: 500 }}
+        >
+
+            <MovieButtonPlay href="/" style={{ borderRadius: 5,
+                                            paddingTop: 10,
+                                            paddingLeft: 14,
+                                            paddingRight: 10,
+                                            marginLeft: 9,
+                                            marginRight: 5,
+                                            width: 110,
+                                            fontSize: 16}}
+          >
+            <FaPlay style={{marginRight: 7 }}/> Preview
+
+          </MovieButtonPlay>
+
+          <MovieButtonPlay href="/" style={{ borderRadius: 5,
+                                            paddingTop: 10,
+                                            paddingLeft: 14,
+                                            paddingRight: 5,
+                                            marginLeft: 9,
+                                            marginRight: 28,
+                                            width: 190,
+                                            fontSize: 16}}
+          >
+            <FaPlay style={{marginRight: 7 }}/> Reproduzir playlist
+
+          </MovieButtonPlay>
+
+        </MovieButtons>
+        
+
+        <h1 style={{ paddingTop: 7, marginLeft: -160 }}>{name}</h1>
+
+      </div>
+      
 
       <ButtonLetf type="button" onClick={() => handleScrollMovies('right')}>
         <FaChevronLeft />
@@ -61,6 +105,7 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
       <ContentMovies
         style={{ marginLeft: marginContent, width: MAX_WIDTH_CONTENT }}
       >
+        
         {movies.map(movie => (
           <Movie key={movie.id}>
             <img
