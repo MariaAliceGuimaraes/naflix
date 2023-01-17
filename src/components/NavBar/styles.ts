@@ -12,7 +12,7 @@ export const Container = styled.header<ContainerProps>`
 
   z-index: 10;
   width: 100%;
-  padding: 20px 40px;
+  padding: 5px 40px;
   position: fixed;
   background: ${({ theme, isBlack }) =>
     isBlack
@@ -32,8 +32,8 @@ export const RoutesMenu = styled.div`
 
   img {
     width: auto;
-    height: 70px;
-    margin-right: 15px;
+    height: 120px;
+    margin-right: 35px;
     filter: saturate(1.4);
 
 
