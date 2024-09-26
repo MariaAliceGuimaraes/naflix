@@ -61,10 +61,10 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
 
         <MovieButtons style={{ display: 'flex',
                                 alignItems: 'center',
-                                width: 500 }}
+                                width: 225 }}
         >
 
-            <MovieButtonPlay href="/" style={{ borderRadius: 5,
+            {/* <MovieButtonPlay href="/" style={{ borderRadius: 5,
                                             paddingTop: 10,
                                             paddingLeft: 14,
                                             paddingRight: 10,
@@ -75,7 +75,7 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
           >
             <FaPlay style={{marginRight: 7 }}/> Preview
 
-          </MovieButtonPlay>
+          </MovieButtonPlay> */}
 
           <MovieButtonPlay href="/" style={{ borderRadius: 5,
                                             paddingTop: 10,
@@ -93,7 +93,7 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
         </MovieButtons>
         
 
-        <h1 style={{ paddingTop: 7, marginLeft: -160 }}>{name}</h1>
+        <h1 style={{ paddingTop: 7, marginLeft: -15 }}>{name}</h1>
 
       </div>
       

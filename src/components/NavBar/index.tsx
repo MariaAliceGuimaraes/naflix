@@ -40,11 +40,11 @@ const NavBar: React.FC = () => {
         <FaBell />
         <button type="button">
           <img
-            src="https://occ-0-761-185.1.nflxso.net/dnm/api/v6/Z-WHgqd_TeJxSuha8aZ5WpyLcX8/AAAABR8DzEDMx6x6rgkSexM2EYh44oQISc8fyEFr6WnraR9_HyniHFDRbXRrElpLThfL9OYFOueAItK7VIEb2xH7AqA.png?r=c71"
+            src="https://cdn.dribbble.com/users/230875/screenshots/12078079/media/c08285d2e039896a565cffeb5eb44a15.jpg"
             alt="imagem profile usuario"
           />
-          <FaCaretDown />
         </button>
+        <FaCaretDown />
       </Profile>
     </Container>
   );

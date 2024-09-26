@@ -29,33 +29,69 @@ const Home: React.FC = () => {
   );
   const [loading, setLoading] = useState(true);
 
-  const apiRoutes: { name: string; route: string }[] = [
-    { name: 'Em alta', route: '3/tv/popular?' },
-    { name: 'Séries populares no N.A.Flix', route: '4/list/8215404?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&language=pt-BR&page=1/results' },
-    { name: 'Lançamentos', route: '3/movie/now_playing?' },
-    { name: 'Filmes bem Avaliados', route: '3/movie/top_rated?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&language=pt-BR&page=1' },
-    { name: 'Mistério', route: '3/discover/movie?with_genres=9648&' },
-    { name: 'Família', route: '3/discover/movie?with_genres=10751&' },
-    { name: 'Ação', route: '3/discover/movie?with_genres=28&' },
-    
+  // OPÇÃO 1 - UMA ROUTE
+  const apiRoutes: { name: string; routes: string }[] = [
+    { name: 'Lançamentos', routes: '3/movie/now_playing?'},
+    // { name: 'Populares no N.A.Flix', routes: '4/list/8226735?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&page=1&language=pt-BR/results'},
+    // { name: 'Populares no N.A.Flix', routes: '4/list/8226731?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&page=1&language=pt-BR/results'},
+    { name: 'Populares Aperte o Play', routes: '4/list/8230811?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&page=1&language=pt-BR/results'},
+    // { name: 'Filmes de aventura', routes: '3/movie/upcoming?with_genres=12&'},
+    { name: 'Filmes para a família', routes: '3/discover/movie?with_genres=10751&'},
+    { name: 'Filmes de ação', routes: '3/discover/movie?with_genres=28&'},
+    { name: 'Filmes sobre música', routes: '3/discover/movie?with_genres=10402&'},
+    { name: 'Filmes sobre guerra', routes: '3/discover/movie?with_genres=10752&'},
+    { name: 'Filmes bem Avaliados', routes: '3/movie/top_rated?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&language=pt-BR&page=1'},
   ];
 
+  // OPÇÃO 2 - ARRAY DE ROUTES
+  // const apiRoutes: { name: string; routes: Array<string> }[] = [
+  //   { name: 'Lançamentos', routes: ['3/movie/now_playing?']},
+  //   { name: 'Populares no N.A.Flix', routes: ['4/list/8215404?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&page=1&language=pt-BR/results', '4/list/8215404?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&page=2&language=pt-BR/results']},
+  //   { name: 'Populares no N.A.Flix 2', routes: ['4/list/8215404?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&page=2&language=pt-BR/results']},
+  //   { name: 'Filmes de aventura', routes: ['3/movie/upcoming?with_genres=12&']},
+  //   { name: 'Filmes para a família', routes: ['3/discover/movie?with_genres=10751&']},
+  //   { name: 'Filmes de ação', routes: ['3/discover/movie?with_genres=28&']},
+  //   { name: 'Filmes sobre música', routes: ['3/discover/movie?with_genres=10402&']},
+  //   { name: 'Filmes sobre guerra', routes: ['3/discover/movie?with_genres=10752&']},
+  //   { name: 'Filmes bem Avaliados', routes: ['3/movie/top_rated?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&language=pt-BR&page=1']},
+  // ];
+
+
   useEffect(() => {
-    const URL_LANGUAGE_AND_KEY = `language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}&page=`;
+    const URL_LANGUAGE_AND_KEY = `language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`;
 
-    const urlsAxios = apiRoutes.map(({ route }, index) => {
-      let pageRandom = '1';
-      // Somente a primeira lista é randômicas
-      if (index < 1) pageRandom = (Math.random() * (5 - 1) + 1).toString();
+    const urlsAxios = apiRoutes.map(({ routes }, index) => {
 
-      const URL = route.concat(URL_LANGUAGE_AND_KEY).concat(pageRandom);
-      return api.get(URL);
+
+      // 1 - USAR ESSA OPÇÃO SE PASSAR SÓ UMA ROUTE
+      // const URL = routes.concat(URL_LANGUAGE_AND_KEY);
+      // return api.get(URL);
+
+      // 2 - USAR ESSA OPÇÃO SE PASSAR MAIS DE UMA ROUTE
+      // for (var r of routes) {
+        // precisamos concatenar os dois resultados
+        const firstapi = api.get(routes.concat(URL_LANGUAGE_AND_KEY));
+        const secondapi = api.get(routes.concat(URL_LANGUAGE_AND_KEY).concat("&page=2"));
+        return firstapi;
+      // }
+
     });
 
     if (sectionsMovies.length === 0) {
       Promise.all([...urlsAxios])
         .then(responses => {
+          // console.log(responses);
+
+          // 1
+          // const responsesApi = responses.map((response, index) => ({
+          //   id: index,
+          //   name: apiRoutes[index].name,
+          //   movies: response.data.results,
+          // }));
+
+          // 2
           const responsesApi = responses.map((response, index) => ({
+            x: console.log(response),
             id: index,
             name: apiRoutes[index].name,
             movies: response.data.results,
@@ -67,7 +103,14 @@ const Home: React.FC = () => {
           // setFeaturedMovieId(responsesApi[0].movies[randamIdMovie].id);
           // setFeaturedMovieId(75006); //umbrella academy
           // setFeaturedMovieId(93405); //squid game
-          setFeaturedMovieId(66732); //stranger things
+          // setFeaturedMovieId(66732); //stranger things
+          // setFeaturedMovieId(94997); //House of the dragon
+          setFeaturedMovieId(97175); //Fate a saga winx
+          // setFeaturedMovieId(84773); //Aneis do poder
+          // setFeaturedMovieId(90802); //Sandman
+          // setFeaturedMovieId(76479); // The boys
+          // setFeaturedMovieId(128384); // ti
+
 
           
           // Criando efeito de loading
